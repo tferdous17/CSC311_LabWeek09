@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.csc311_labweek09.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="605.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="tfFirstName" layoutX="221.0" layoutY="134.0" />
+      <Text layoutX="217.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration Form" textAlignment="CENTER" wrappingWidth="168.9765625">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <Label layoutX="153.0" layoutY="139.0" text="First Name" />
+      <TextField fx:id="tfLastName" layoutX="221.0" layoutY="174.0" />
+      <Label layoutX="153.0" layoutY="179.0" text="Last Name" />
+      <TextField fx:id="tfEmail" layoutX="221.0" layoutY="219.0" />
+      <Label layoutX="167.0" layoutY="224.0" text="Email" />
+      <TextField fx:id="tfDOB" layoutX="221.0" layoutY="264.0" />
+      <Label layoutX="149.0" layoutY="269.0" text="Date of Birth" />
+      <TextField fx:id="tfZipCode" layoutX="221.0" layoutY="311.0" />
+      <Label layoutX="158.0" layoutY="316.0" text="Zip Code" />
+   </children>
+</AnchorPane>
