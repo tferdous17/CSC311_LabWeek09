@@ -71,23 +71,6 @@ public class HelloController {
             }
         });
 
-        tfDOB.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) {
-                System.out.println("Email is focused");
-            } else {
-                if (tfDOB.getText().matches("^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$")) {
-                    tfDOB.setBorder(null);
-                    warningLabel.setText("");
-                } else {
-                    tfDOB.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
-                    tfDOB.setVisible(true);
-                    tfDOB.requestFocus();
-                    warningLabel.setText("WARNING: " + tfDOB.getText() + " is not a valid date of birth.");
-                    flag = true;
-                }
-            }
-        });
-
         tfEmail.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 System.out.println("Email is focused");
@@ -105,7 +88,22 @@ public class HelloController {
             }
         });
 
-
+        tfDOB.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                System.out.println("Email is focused");
+            } else {
+                if (tfDOB.getText().matches("^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$")) {
+                    tfDOB.setBorder(null);
+                    warningLabel.setText("");
+                } else {
+                    tfDOB.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+                    tfDOB.setVisible(true);
+                    tfDOB.requestFocus();
+                    warningLabel.setText("WARNING: " + tfDOB.getText() + " is not a valid date of birth.");
+                    flag = true;
+                }
+            }
+        });
 
     }
 
