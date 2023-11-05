@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,12 +26,15 @@ public class HelloController {
     boolean flag = false;
 
     public void initialize() {
-        tfFirstName.setOnKeyPressed(event -> {
-            if (event.getCode() != KeyCode.TAB && flag){
-                tfFirstName.setStyle("-fx-border-color: #12c812 ; -fx-border-width: 1px ;");
+        List<TextField> textFieldList = List.of(tfFirstName, tfLastName, tfEmail, tfDOB, tfZipCode);
 
-                flag = false;
-            }
+        textFieldList.forEach(textField -> {
+            textField.setOnKeyPressed(event -> {
+                if (event.getCode() != KeyCode.TAB && flag) {
+                    textField.setStyle("-fx-border-color: #12c812 ; -fx-border-width: 1px ;");
+                    flag = false;
+                }
+            });
         });
 
         tfFirstName.focusedProperty().addListener((observable, oldValue, newValue) -> {
