@@ -54,6 +54,22 @@ public class HelloController {
             }
         });
 
+        tfLastName.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                System.out.println("First name is focused");
+            } else {
+                if (tfLastName.getText().matches("[a-zA-z]{2,25}")) {
+                    tfLastName.setBorder(null);
+                    warningLabel.setText("");
+                } else {
+                    tfLastName.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+                    tfLastName.setVisible(true);
+                    tfLastName.requestFocus();
+                    warningLabel.setText("WARNING: " + tfLastName.getText() + " is not a valid last name.");
+                    flag = true;
+                }
+            }
+        });
     }
 
     public void onBtnAddClick(ActionEvent actionEvent) {
