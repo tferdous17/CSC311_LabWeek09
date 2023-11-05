@@ -56,7 +56,7 @@ public class HelloController {
 
         tfLastName.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                System.out.println("First name is focused");
+                System.out.println("Last name is focused");
             } else {
                 if (tfLastName.getText().matches("[a-zA-z]{2,25}")) {
                     tfLastName.setBorder(null);
@@ -70,6 +70,26 @@ public class HelloController {
                 }
             }
         });
+
+        tfEmail.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                System.out.println("Email is focused");
+            } else {
+                if (tfEmail.getText().matches("[a-zA-z0-9]{3,15}@farmingdale.edu")) {
+                    tfEmail.setBorder(null);
+                    warningLabel.setText("");
+                } else {
+                    tfEmail.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+                    tfEmail.setVisible(true);
+                    tfEmail.requestFocus();
+                    warningLabel.setText("WARNING: " + tfEmail.getText() + " is not a valid email address.");
+                    flag = true;
+                }
+            }
+        });
+
+
+
     }
 
     public void onBtnAddClick(ActionEvent actionEvent) {
