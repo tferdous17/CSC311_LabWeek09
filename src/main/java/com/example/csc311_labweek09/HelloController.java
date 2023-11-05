@@ -24,6 +24,7 @@ public class HelloController {
     private Label welcomeText;
 
     boolean flag = false;
+    int validatedFieldCounter = 0;
 
     public void initialize() {
         List<TextField> textFieldList = List.of(tfFirstName, tfLastName, tfEmail, tfDOB, tfZipCode);
@@ -42,6 +43,7 @@ public class HelloController {
                 System.out.println("First name is focused");
             } else {
                 if (tfFirstName.getText().matches("[a-zA-z]{2,25}")) {
+                    validatedFieldCounter++;
                     tfFirstName.setBorder(null);
                     warningLabel.setText("");
                 } else {
@@ -59,6 +61,7 @@ public class HelloController {
                 System.out.println("Last name is focused");
             } else {
                 if (tfLastName.getText().matches("[a-zA-z]{2,25}")) {
+                    validatedFieldCounter++;
                     tfLastName.setBorder(null);
                     warningLabel.setText("");
                 } else {
@@ -76,6 +79,7 @@ public class HelloController {
                 System.out.println("Email is focused");
             } else {
                 if (tfEmail.getText().matches("[a-zA-z0-9]{3,15}@farmingdale.edu")) {
+                    validatedFieldCounter++;
                     tfEmail.setBorder(null);
                     warningLabel.setText("");
                 } else {
@@ -93,6 +97,7 @@ public class HelloController {
                 System.out.println("Email is focused");
             } else {
                 if (tfDOB.getText().matches("^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$")) {
+                    validatedFieldCounter++;
                     tfDOB.setBorder(null);
                     warningLabel.setText("");
                 } else {
@@ -104,6 +109,25 @@ public class HelloController {
                 }
             }
         });
+
+        tfZipCode.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                System.out.println("Email is focused");
+            } else {
+                if (tfZipCode.getText().matches("^[0-9]{5}")) {
+                    validatedFieldCounter++;
+                    tfZipCode.setBorder(null);
+                    warningLabel.setText("");
+                } else {
+                    tfZipCode.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
+                    tfZipCode.setVisible(true);
+                    tfZipCode.requestFocus();
+                    warningLabel.setText("WARNING: " + tfZipCode.getText() + " is not a valid zip code.");
+                    flag = true;
+                }
+            }
+        });
+
 
     }
 
