@@ -28,6 +28,7 @@ public class HelloController {
 
     public void initialize() {
         List<TextField> textFieldList = List.of(tfFirstName, tfLastName, tfEmail, tfDOB, tfZipCode);
+        btnAdd.setDisable(true);
 
         textFieldList.forEach(textField -> {
             textField.setOnKeyPressed(event -> {
@@ -118,6 +119,10 @@ public class HelloController {
                     validatedFieldCounter++;
                     tfZipCode.setBorder(null);
                     warningLabel.setText("");
+
+                    // Button only gets enabled after pressing tab on the final text field
+                    btnAdd.setDisable(false);
+                    btnAdd.setStyle("-fx-background-color: #7373df; -fx-border-radius: 4px; -fx-text-fill: white; -fx-cursor: pointer;");
                 } else {
                     tfZipCode.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
                     tfZipCode.setVisible(true);
@@ -127,7 +132,7 @@ public class HelloController {
                 }
             }
         });
-
+        System.out.println(validatedFieldCounter);
 
     }
 
