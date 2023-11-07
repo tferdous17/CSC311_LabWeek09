@@ -1,13 +1,19 @@
 package com.example.csc311_labweek09;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -141,7 +147,18 @@ public class RegistrationController {
 
     }
 
-    public void onBtnAddClick(ActionEvent actionEvent) {
+    public void onBtnAddClick(ActionEvent actionEvent) throws IOException {
         System.out.println("All fields successfully validated.");
+        // load secondary UI after all fields are validated
+        loadSecondaryUI(actionEvent);
+    }
+
+    public void loadSecondaryUI(Event event) throws IOException {
+        // load secondary UI
+        FXMLLoader fxmlLoader = new FXMLLoader(RegistrationApplication.class.getResource("secondary-screen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 }
