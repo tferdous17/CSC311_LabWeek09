@@ -159,6 +159,7 @@ public class RegistrationController {
         System.out.println("All fields successfully validated.");
         // load secondary UI after all fields are validated
         loadSecondaryUI(actionEvent);
+        return true;
     }
 
     public void loadSecondaryUI(Event event) throws IOException {
