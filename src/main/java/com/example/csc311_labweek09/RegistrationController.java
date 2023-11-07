@@ -18,6 +18,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Controller class for the Registration application
+ * Handles data validation through regex and loading secondary user interfaces
+ * @author Tasnim Ferdous
+ */
 public class RegistrationController {
     public TextField tfFirstName;
     public TextField tfLastName;
@@ -144,7 +149,13 @@ public class RegistrationController {
         });
     }
 
-    public void onBtnAddClick(ActionEvent actionEvent) throws IOException {
+    /**
+     * Event handling for the add button once all fields are validated
+     * @return boolean for whether the button was clicked
+     * @param actionEvent Event to trigger secondary UI to load
+     * @throws IOException Exception if FXML file not found
+     */
+    public boolean onBtnAddClick(ActionEvent actionEvent) throws IOException {
         System.out.println("All fields successfully validated.");
         // load secondary UI after all fields are validated
         loadSecondaryUI(actionEvent);
