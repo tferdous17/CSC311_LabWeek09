@@ -46,6 +46,7 @@ public class HelloController {
                 if (tfFirstName.getText().matches("[a-zA-z]{2,25}")) {
                     validatedFieldCounter++;
                     tfFirstName.setBorder(null);
+                    tfFirstName.setEditable(false);
                     warningLabel.setText("");
                 } else {
                     tfFirstName.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
@@ -64,6 +65,7 @@ public class HelloController {
                 if (tfLastName.getText().matches("[a-zA-z]{2,25}")) {
                     validatedFieldCounter++;
                     tfLastName.setBorder(null);
+                    tfLastName.setEditable(false);
                     warningLabel.setText("");
                 } else {
                     tfLastName.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
@@ -82,6 +84,7 @@ public class HelloController {
                 if (tfEmail.getText().matches("[a-zA-z0-9]{3,15}@farmingdale.edu")) {
                     validatedFieldCounter++;
                     tfEmail.setBorder(null);
+                    tfEmail.setEditable(false);
                     warningLabel.setText("");
                 } else {
                     tfEmail.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
@@ -95,11 +98,12 @@ public class HelloController {
 
         tfDOB.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                System.out.println("Email is focused");
+                System.out.println("DOB is focused");
             } else {
                 if (tfDOB.getText().matches("^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$")) {
                     validatedFieldCounter++;
                     tfDOB.setBorder(null);
+                    tfDOB.setEditable(false);
                     warningLabel.setText("");
                 } else {
                     tfDOB.setStyle("-fx-border-color: red ; -fx-border-width: 2px ;");
@@ -113,11 +117,12 @@ public class HelloController {
 
         tfZipCode.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                System.out.println("Email is focused");
+                System.out.println("Zip code is focused");
             } else {
                 if (tfZipCode.getText().matches("^[0-9]{5}")) {
                     validatedFieldCounter++;
                     tfZipCode.setBorder(null);
+                    tfZipCode.setEditable(false);
                     warningLabel.setText("");
 
                     // Button only gets enabled after pressing tab on the final text field
@@ -137,5 +142,6 @@ public class HelloController {
     }
 
     public void onBtnAddClick(ActionEvent actionEvent) {
+        System.out.println("All fields successfully validated.");
     }
 }
