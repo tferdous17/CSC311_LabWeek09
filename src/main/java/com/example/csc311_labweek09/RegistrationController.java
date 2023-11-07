@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class HelloController {
+public class RegistrationController {
     public TextField tfFirstName;
     public TextField tfLastName;
     public TextField tfEmail;
