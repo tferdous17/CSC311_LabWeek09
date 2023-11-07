@@ -26,16 +26,15 @@ public class RegistrationController {
     public TextField tfZipCode;
     public Button btnAdd;
     public Label warningLabel;
-    @FXML
-    private Label welcomeText;
 
     boolean flag = false;
-    int validatedFieldCounter = 0;
 
     public void initialize() {
+        // Add all text fields to a list
         List<TextField> textFieldList = List.of(tfFirstName, tfLastName, tfEmail, tfDOB, tfZipCode);
-        btnAdd.setDisable(true);
+        btnAdd.setDisable(true); // initially disable add button
 
+        // Add a key pressed listener to each text field
         textFieldList.forEach(textField -> {
             textField.setOnKeyPressed(event -> {
                 if (event.getCode() != KeyCode.TAB && flag) {
@@ -45,12 +44,12 @@ public class RegistrationController {
             });
         });
 
+        // Add focus listener to first name and adjust properties such as border, editable, and warning label based on validation success
         tfFirstName.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 System.out.println("First name is focused");
             } else {
-                if (tfFirstName.getText().matches("[a-zA-z]{2,25}")) {
-                    validatedFieldCounter++;
+                if (tfFirstName.getText().matches("[a-zA-z]{2,25}")) { // first name regex
                     tfFirstName.setBorder(null);
                     tfFirstName.setEditable(false);
                     warningLabel.setText("");
@@ -64,12 +63,12 @@ public class RegistrationController {
             }
         });
 
+        // Add focus listener to last name and adjust properties such as border, editable, and warning label based on validation success
         tfLastName.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 System.out.println("Last name is focused");
             } else {
-                if (tfLastName.getText().matches("[a-zA-z]{2,25}")) {
-                    validatedFieldCounter++;
+                if (tfLastName.getText().matches("[a-zA-z]{2,25}")) { // last name regex
                     tfLastName.setBorder(null);
                     tfLastName.setEditable(false);
                     warningLabel.setText("");
@@ -83,12 +82,12 @@ public class RegistrationController {
             }
         });
 
+        // Add focus listener to email and adjust properties such as border, editable, and warning label based on validation success
         tfEmail.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 System.out.println("Email is focused");
             } else {
-                if (tfEmail.getText().matches("[a-zA-z0-9]{3,15}@farmingdale.edu")) {
-                    validatedFieldCounter++;
+                if (tfEmail.getText().matches("[a-zA-z0-9]{3,15}@farmingdale.edu")) { // email regex
                     tfEmail.setBorder(null);
                     tfEmail.setEditable(false);
                     warningLabel.setText("");
@@ -102,12 +101,12 @@ public class RegistrationController {
             }
         });
 
+        // Add focus listener to DOB and adjust properties such as border, editable, and warning label based on validation success
         tfDOB.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 System.out.println("DOB is focused");
             } else {
-                if (tfDOB.getText().matches("^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$")) {
-                    validatedFieldCounter++;
+                if (tfDOB.getText().matches("^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$")) { // DOB regex
                     tfDOB.setBorder(null);
                     tfDOB.setEditable(false);
                     warningLabel.setText("");
@@ -121,12 +120,12 @@ public class RegistrationController {
             }
         });
 
+        // Add focus listener to zip code and adjust properties such as border, editable, and warning label based on validation success
         tfZipCode.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 System.out.println("Zip code is focused");
             } else {
-                if (tfZipCode.getText().matches("^[0-9]{5}")) {
-                    validatedFieldCounter++;
+                if (tfZipCode.getText().matches("^[0-9]{5}")) { // zip code regex
                     tfZipCode.setBorder(null);
                     tfZipCode.setEditable(false);
                     warningLabel.setText("");
@@ -143,8 +142,6 @@ public class RegistrationController {
                 }
             }
         });
-        System.out.println(validatedFieldCounter);
-
     }
 
     public void onBtnAddClick(ActionEvent actionEvent) throws IOException {
